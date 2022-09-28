@@ -1,0 +1,26 @@
+{
+  "name": "film-booklet",
+  "version": "1.0.0",
+  "description": "Web application that consumes an API using React",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarlZacferro/Film-Booklet.git"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarlZacferro/Film-Booklet/issues"
+  },
+  "homepage": "https://github.com/KarlZacferro/Film-Booklet#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

@@ -1,30 +1,46 @@
-import { Container } from "./styles";
+import { Container, MovieList, Movie } from "./styles";
 
 function Home(){
+
+    const movies =[
+
+        {
+            id: 1,
+            title: 'Spider Man',
+            image_url:"https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg",
+        },
+        
+        {
+            id: 2,
+            title: 'Spider Man',
+            image_url:"https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg",
+        },
+    
+        {
+            id: 3,
+            title: 'Spider Man',
+            image_url:"https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg",
+        },
+
+    ]
+
     return(
         <Container>
-
         <h1>Movies</h1>
-        <ul>
-            <li>
-                <a href="https:/google.com.br"><img src="https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg" alt=" Spider man" /></a>
-               
-               <span>Spider man</span> 
-               
-            </li>
+        <MovieList>
 
-            <li>
-            <img src="https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg" alt=" Spider man"/>
-               <span>Spider man</span>
-            </li>
-
-            <li>
-            <img src="https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg" alt=" Spider man"/>
-               <span>Spider man</span>
-            </li>
+            {movies.map(movie => {
+                return (
+                    <Movie key={movie.id}>
+                    <a href="https:/google.com.br"><img src={movie.image_url} alt={movie.title} /></a>
+                        <span>{movie.title}</span>
+                    </Movie>
+                )
+            })}
             
-        </ul>
-        </Container>
+            
+        </MovieList>
+    </Container>
     )
 }
 

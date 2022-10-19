@@ -1,47 +1,40 @@
+import { Link } from 'react-router-dom';
+import {APIkey} from '../../config/key';
 import { Container, MovieList, Movie } from "./styles";
+import {useState, useEffect} from 'react'
+
 
 function Home(){
 
-    const movies =[
+    const [movies, setMovies] = useState([])
+    const imagePath = 'https://image.tmdb.org/t/p/w500/'
 
-        {
-            id: 1,
-            title: 'Spider Man',
-            image_url:"https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg",
-        },
-        
-        {
-            id: 2,
-            title: 'Spider Man',
-            image_url:"https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg",
-        },
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIkey}&language=en-US`)
+        .then(response => response.json())
+        .then(data => {
+          setMovies(data.results)
+        })
+      }, [])
     
-        {
-            id: 3,
-            title: 'Spider Man',
-            image_url:"https://upload.wikimedia.org/wikipedia/pt/0/00/Spider-Man_No_Way_Home_poster.jpg",
-        },
-
-    ]
 
     return(
-        <Container>
-        <h1>Movies</h1>
-        <MovieList>
-
-            {movies.map(movie => {
-                return (
-                    <Movie key={movie.id}>
-                    <a href="https:/google.com.br"><img src={movie.image_url} alt={movie.title} /></a>
-                        <span>{movie.title}</span>
-                    </Movie>
-                )
-            })}
-            
-            
-        </MovieList>
+       <Container>
+      <h1>Movies</h1>
+      <MovieList>
+      {movies.map(movie => {
+        return (
+          <Movie key={movie.id}>
+            <Link to={`/details/${movie.id}`}>
+              <img src={`${imagePath}${movie.poster_path}`} alt={movie.title}/>
+            </Link>
+            <span>{movie.title}</span>
+          </Movie>
+        )
+      })}
+      </MovieList>
     </Container>
-    )
+  );
 }
 
 export default Home;

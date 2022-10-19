@@ -37,6 +37,7 @@ export const Container = styled.div`
         span{
          font-weignt: bold;
          font-size: 120%;
+         text-aling: center;
         }
          
         a{
